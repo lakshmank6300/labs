@@ -1,0 +1,15 @@
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  templateUrl: './hello.component.html',
+  styleUrls: ['./hello.component.css']
+})
+export class HelloComponent {
+  Message: string="Good Morning!";
+  changeName(){
+    this.Message="Have a nice day!";
+  }
+}
+hello.component.html:
+<p>{{Message}}</p>
+<h2 (click)="changeName()">Click here to change</h2>
