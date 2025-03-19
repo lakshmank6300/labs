@@ -1,0 +1,36 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { RepeatDirective } from './repeat.directive';
+@NgModule({
+  declarations: [
+    AppComponent,
+    RepeatDirective
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [
+    AppComponent
+  ]
+})
+export class AppModule { }
+repeat.directive.ts:
+import { Directive, TemplateRef, ViewContainerRef, Input } from '@angular/core';
+@Directive({
+  selector: '[appRepeat]'
+})
+export class RepeatDirective {
+  constructor(private templateRef: TemplateRef<any>, private viewContainer: ViewContainerRef) { }
+  @Input() set appRepeat(count: number){
+    for(let i=0;i<count;i++){
+      this.viewContainer.createEmbeddedView(this.templateRef);
+    }
+  }
+}
+app.component.html:
+<h1>Custom Structural Directives</h1>
+<h2 *appRepeat="10">Angular JS</h2>
