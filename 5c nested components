@@ -1,0 +1,49 @@
+app.module.ts:
+import { NgModule } from '@angular/core';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { CourseListComponent } from './course-list/course-list.component';
+@NgModule({
+  declarations: [
+    AppComponent,
+    CourseListComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [
+    AppComponent,
+    CourseListComponent
+  ]
+})
+export class AppModule { }
+ 
+app.component.ts:
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  visible:boolean=false;
+  showView(){
+    this.visible=!this.visible;
+  }
+}
+
+course-list.component.html:
+<table border="1">
+    <thead><tr><th>CourseName</th><th>CourseId</th><th>Course Price</th></tr></thead>
+    <tbody>
+        <tr><td>HTML</td><td>1</td><td>1000</td></tr>
+        <tr><td>CSS</td><td>2</td><td>2000</td></tr>
+        <tr><td>JS</td><td>3</td><td>3000</td></tr>
+        <tr><td>Node JS</td><td>4</td><td>4000</td></tr>
+        <tr><td>React</td><td>5</td><td>5000</td></tr>
+        <tr><td>Angular</td><td>6</td><td>6000</td></tr>
+    </tbody>
+</table>
