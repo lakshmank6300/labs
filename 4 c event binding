@@ -1,0 +1,39 @@
+app.component.ts:
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  onSubmit(){
+    var un=(document.getElementById("uname") as HTMLInputElement).value;
+    (document.getElementById("id1") as HTMLInputElement).innerHTML="Your Name is: "+un;
+    var p=(document.getElementById("pwd") as HTMLInputElement).value;
+    (document.getElementById("id2") as HTMLInputElement).innerHTML="Your Password is: "+p;
+  }
+}
+app.component.html:
+<h2>Event Binding</h2>
+<table>
+  <tr>
+    <td>
+      <label for="uname">Enter a User Name: </label>
+      <input type="text" size="20px" id="uname" required autocomplete="off" placeholder="Enter your username/id"><br /><br />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="pwd">Enter your Password: </label>
+      <input type="password" id="pwd" required placeholder="Enter your password">
+      <br /><br />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button (click)="onSubmit()">Login</button>
+    </td>
+  </tr>
+</table>
+<div id="id1"></div>
+<div id="id2"></div>
